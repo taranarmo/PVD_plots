@@ -9,7 +9,6 @@ def plot_pvd(x, y, ax=None):
     x, y = (data.cumsum() for data in (x, y))
     for depth, color in zip(cols, plt.cm.bwr_r(np.linspace(0, 1, len(cols)))):
         ax.plot(x.loc[:, depth], y.loc[:, depth], label=f"{depth:.2f}", color=color)
-    ax.legend()
 
 
 aq1 = {}
@@ -28,5 +27,14 @@ axes = axes.flatten()
 plot_pvd(aq1["east"], aq1["up"], axes[0])
 plot_pvd(aq1["north"], aq1["up"], axes[1])
 plot_pvd(aq1["east"], aq1["north"], axes[2])
+cell = np.argmin(np.abs((1.6 - aq1['east'].columns.values)))
+axes[3].plot(aq1["east"].iloc[:, cell].cumsum(), aq1["north"].iloc[:, cell].cumsum())
+axes[3].plot(aq2["east"].iloc[:, cell].cumsum(), aq2["north"].iloc[:, cell].cumsum())
+
+for ax, label in zip(axes, "abcd"):
+    ax.text(s=label, x=0.05, y=0.5, transform=ax.transAxes)
+handles, labels = axes[0].get_legend_handles_labels()
+fig.legend(handles, labels, bbox_to_anchor=(1, 0.5), loc='center right')
+plt.subplots_adjust(right=0.85)
 plt.savefig("pvds.png")
 plt.show()
