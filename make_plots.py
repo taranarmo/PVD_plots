@@ -55,6 +55,6 @@ for ax, label in zip(axes, "abcd"):
 
 plt.tight_layout()
 handles, labels = axes[0].get_legend_handles_labels()
-fig.legend(handles, labels, bbox_to_anchor=(1, 0.5), loc='center right')
-plt.subplots_adjust(right=0.85)
+fig.legend(handles, labels, bbox_to_anchor=(0.5, 1), loc='upper center', ncol=len(labels)//3+1)
+plt.subplots_adjust(top=0.9)
 plt.savefig("pvds.png")
