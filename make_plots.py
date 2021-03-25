@@ -58,3 +58,12 @@ handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(handles, labels, bbox_to_anchor=(0.5, 1), loc='upper center', ncol=len(labels)//3+1)
 plt.subplots_adjust(top=0.9)
 plt.savefig("pvds.png")
+axes[0].set_xlabel("Восток, м");
+axes[0].set_ylabel("Вверх, м");
+axes[1].set_xlabel("Север, м");
+axes[2].set_xlabel("Восток, м");
+axes[2].set_ylabel("Север, м");
+for i, text in enumerate(axes[3].get_legend().texts):
+    text.set_text(f"Прибор{i+1}")
+axes[3].set_xlabel("Восток, м");
+plt.savefig("pvds_ru.png")
