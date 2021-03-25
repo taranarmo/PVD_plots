@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 params = {
-    "font.size": 13,
-    "legend.fontsize": 10,
+    "font.size": 8,
+    "legend.fontsize": 8,
     "legend.handlelength": 1,
     "xtick.labelsize": 8,
     "ytick.labelsize": 8,
@@ -34,7 +34,7 @@ for direction in ["East", "North", "Up"]:
     aq2[direction.lower()] = aq2[direction.lower()].loc[index]
 
 cols = aq1['east'].columns.values[::10]
-fig, axes = plt.subplots(2, 2, figsize=(5, 5), dpi=500, sharey='row')
+fig, axes = plt.subplots(2, 2, figsize=(5, 7), dpi=500, sharey='row')
 axes = axes.flatten()
 plot_pvd(aq1["east"], aq1["up"], axes[0])
 axes[0].set_xlabel("East, m");
@@ -45,8 +45,8 @@ plot_pvd(aq1["east"], aq1["north"], axes[2])
 axes[2].set_xlabel("East, m");
 axes[2].set_ylabel("North, m");
 cell = np.argmin(np.abs((1.6 - aq1['east'].columns.values)))
-axes[3].plot(aq1["east"].iloc[:, cell].cumsum()*60, aq1["north"].iloc[:, cell].cumsum()*60, label="device1")
-axes[3].plot(aq2["east"].iloc[:, cell].cumsum()*60, aq2["north"].iloc[:, cell].cumsum()*60, label="device2")
+axes[3].plot(aq1["east"].iloc[:, cell].cumsum()*60, aq1["north"].iloc[:, cell].cumsum()*60, label="Device1")
+axes[3].plot(aq2["east"].iloc[:, cell].cumsum()*60, aq2["north"].iloc[:, cell].cumsum()*60, label="Device2")
 axes[3].set_xlabel("East, m");
 axes[3].legend()
 
