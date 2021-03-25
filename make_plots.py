@@ -51,7 +51,7 @@ axes[3].set_xlabel("East, m");
 axes[3].legend()
 
 for ax, label in zip(axes, "abcd"):
-    ax.text(s=label, x=0.03, y=0.5, transform=ax.transAxes)
+    ax.text(s=label, x=0.03, y=0.5, transform=ax.transAxes, fontstyle="italic")
 
 plt.tight_layout()
 handles, labels = axes[0].get_legend_handles_labels()
