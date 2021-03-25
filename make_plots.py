@@ -45,8 +45,8 @@ plot_pvd(aq1["east"], aq1["north"], axes[2])
 axes[2].set_xlabel("East, m");
 axes[2].set_ylabel("North, m");
 cell = np.argmin(np.abs((1.6 - aq1['east'].columns.values)))
-axes[3].plot(aq1["east"].iloc[:, cell].cumsum()*60, aq1["north"].iloc[:, cell].cumsum()*60, label="Device1")
-axes[3].plot(aq2["east"].iloc[:, cell].cumsum()*60, aq2["north"].iloc[:, cell].cumsum()*60, label="Device2")
+axes[3].plot(aq1["east"].iloc[:, cell].cumsum()*60, aq1["north"].iloc[:, cell].cumsum()*60, label="ADCP I")
+axes[3].plot(aq2["east"].iloc[:, cell].cumsum()*60, aq2["north"].iloc[:, cell].cumsum()*60, label="ADCP II")
 axes[3].set_xlabel("East, m");
 axes[3].legend()
 
@@ -63,7 +63,5 @@ axes[0].set_ylabel("Вверх, м");
 axes[1].set_xlabel("Север, м");
 axes[2].set_xlabel("Восток, м");
 axes[2].set_ylabel("Север, м");
-for i, text in enumerate(axes[3].get_legend().texts):
-    text.set_text(f"Прибор{i+1}")
 axes[3].set_xlabel("Восток, м");
 plt.savefig("pvds_ru.png")
