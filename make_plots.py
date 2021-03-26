@@ -20,7 +20,7 @@ def plot_pvd(x, y, ax=None):
         ax.plot(x.loc[:, depth], y.loc[:, depth], label=f"{depth:.2f}", color=color)
 
 
-index = slice("2020-03-28", "2020-04-05")
+index = slice("2020-03-30 10:30", "2020-04-05")
 aq1 = {}
 for direction in ["East", "North", "Up"]:
     aq1[direction.lower()] = pd.read_csv(f"AQ1_EXP102.{direction}.csv", index_col=0, parse_dates=True)
